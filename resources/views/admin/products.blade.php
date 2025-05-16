@@ -3,7 +3,7 @@
 <div class="main-content-inner">
     <div class="main-content-wrap">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-            <h3>All Products</h3>
+            <h3>Toàn Bộ Sản Phẩm</h3>
             <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                 <li>
                     <a href="{{ route('admin.index') }}">
@@ -14,7 +14,7 @@
                     <i class="icon-chevron-right"></i>
                 </li>
                 <li>
-                    <div class="text-tiny">All Products</div>
+                    <div class="text-tiny">Toàn Bộ Sản Phẩm</div>
                 </li>
             </ul>
         </div>
@@ -31,22 +31,22 @@
                         </div>
                     </form>
                 </div>
-                <a class="tf-button style-1 w208" href="{{ route('admin.product.create') }}"><i class="icon-plus"></i>Add new</a>
+                <a class="tf-button style-1 w208" href="{{ route('admin.product.create') }}"><i class="icon-plus"></i>Thêm Mới</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Brand</th>
-                            <th>Featured</th>
-                            <th>Stock</th>
-                            <th>Quantity</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>ID</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Mặt Hàng</th>
+                            <th>Thương Hiệu</th>
+                            <th>Nổi Bật</th>
+                            <th>Hàng Tồn Kho</th>
+                            <th>Số Lượng</th>
+                            <th>Trạng Thái</th>
+                            <th>Thao Tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,26 +65,26 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->brand->name }}</td>
-                            <td>{{ $product->is_featured == 0 ? "No" : "Yes" }}</td>
+                            <td>{{ $product->is_featured == 0 ? "Không" : "Có" }}</td>
                             <td>{{ $product->status }}</td>
                             <td>{{ $product->amount }}</td>
                             <td>{{ $product->status }}</td>
                             <td>
                                 <div class="list-icon-function">
                                     <a href="#" target="_blank">
-                                        <div class="item eye">
+                                        <div class="item eye" title="Xem">
                                             <i class="icon-eye"></i>
                                         </div>
                                     </a>
                                     <a href="{{ route('admin.product.edit', $product->id) }}">
-                                        <div class="item edit">
+                                        <div class="item edit" title="Sửa">
                                             <i class="icon-edit-3"></i>
                                         </div>
                                     </a>
                                     <form action="{{ route('admin.product.delete', ['id' => $product->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="item text-danger delete">
+                                        <button type="submit" class="item text-danger delete" title="Xóa">
                                             <i class="icon-trash-2"></i>
                                         </button>
                                     </form>
@@ -111,8 +111,8 @@
         $('.delete').on('click', function(e) {
             e.preventDefault();
             swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
+                title: "Bạn có chắc chắn muốn xóa?",
+                text: "Bạn sẽ không thể khôi phục sản phẩm này!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
