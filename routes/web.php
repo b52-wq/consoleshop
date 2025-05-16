@@ -22,11 +22,7 @@ Route::put('/cart/update/{rowId}', [CartController::class, 'update'])->name('car
 Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
-<<<<<<< HEAD
-Route::post('/checkout', [CartController::class, 'placeOrder'])->name('cart.placeOrder');
-=======
 Route::post('/place-order', [CartController::class, 'placeOrder'])->name('cart.placeOrder');
->>>>>>> upstream/main
 Route::get('/order-confirmation', [CartController::class, 'orderConfirmation'])->name('cart.order.Confirmation');
 
 Route::middleware(['auth'])->group(function () {
@@ -41,10 +37,9 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
 
     // User Management Routes
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
-    Route::get('/admin/user/edit/{id}', [AdminController::class, 'userEdit'])->name('admin.user.edit');
-    Route::put('/admin/user/update/{id}', [AdminController::class, 'userUpdate'])->name('admin.user.update');
-    Route::delete('/admin/user/delete/{id}', [AdminController::class, 'userDelete'])->name('admin.user.delete');
     
+    Route::get('/admin/userscontrol', [AdminController::class, 'usersControl'])->name('admin.userscontrol');
+
     Route::get('/admin/brands', [AdminController::class, 'brands'])->name('admin.brands');
     Route::get('/admin/brand/create', [AdminController::class, 'create_Brand'])->name('admin.brand.create');
     Route::post('/admin/brand/store', [AdminController::class, 'store_Brand'])->name('admin.brand.store');
@@ -65,13 +60,10 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::get('/admin/product/edit/{id}', [AdminController::class, 'edit_Product'])->name('admin.product.edit');
     Route::put('/admin/product/update/{id}', [AdminController::class, 'update_Product'])->name('admin.product.update');
     Route::delete('/admin/product/{id}/delete', [AdminController::class, 'delete_Product'])->name('admin.product.delete');
-<<<<<<< HEAD
-=======
 
     Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
     Route::get('/admin/order/details/{id}', [AdminController::class, 'orderDetails'])->name('admin.order.details');
     Route::put('/admin/order/{id}/status', [AdminController::class, 'updateOrderStatus'])->name('admin.order.status.update');
     
->>>>>>> upstream/main
 });
 

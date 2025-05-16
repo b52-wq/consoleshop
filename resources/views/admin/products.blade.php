@@ -37,7 +37,6 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-<<<<<<< HEAD
                             <th>ID</th>
                             <th>Tên Sản Phẩm</th>
                             <th>Giá</th>
@@ -48,18 +47,6 @@
                             <th>Số Lượng</th>
                             <th>Trạng Thái</th>
                             <th>Thao Tác</th>
-=======
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Brand</th>
-                            <th>Featured</th>
-                            <th>Stock</th>
-                            <th>Quantity</th>
-                            <th>Status</th>
-                            <th>Action</th>
->>>>>>> upstream/main
                         </tr>
                     </thead>
                     <tbody>
@@ -78,11 +65,7 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->brand->name }}</td>
-<<<<<<< HEAD
                             <td>{{ $product->is_featured == 0 ? "Không" : "Có" }}</td>
-=======
-                            <td>{{ $product->is_featured == 0 ? "No" : "Yes" }}</td>
->>>>>>> upstream/main
                             <td>{{ $product->status }}</td>
                             <td>{{ $product->amount }}</td>
                             <td>{{ $product->status }}</td>
@@ -94,11 +77,7 @@
                                         </div>
                                     </a>
                                     <a href="{{ route('admin.product.edit', $product->id) }}">
-<<<<<<< HEAD
                                         <div class="item edit" title="Sửa">
-=======
-                                        <div class="item edit">
->>>>>>> upstream/main
                                             <i class="icon-edit-3"></i>
                                         </div>
                                     </a>
@@ -132,13 +111,8 @@
         $('.delete').on('click', function(e) {
             e.preventDefault();
             swal({
-<<<<<<< HEAD
                 title: "Bạn có chắc chắn muốn xóa?",
                 text: "Bạn sẽ không thể khôi phục sản phẩm này!",
-=======
-                title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
->>>>>>> upstream/main
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

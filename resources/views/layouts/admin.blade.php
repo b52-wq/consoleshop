@@ -124,20 +124,12 @@
                                         </li>
                                     </ul>
                                 </li>
-<<<<<<< HEAD
                                 <li class="menu-item">
-                                    <a href="users.html" class="">
+                                    <a href="{{route('admin.userscontrol')}}" class="">
                                         <div class="icon"><i class="icon-user"></i></div>
                                         <div class="text">Quản Lý Người Dùng</div>
                                     </a>
                                 </li>
-=======
-
-
-
-
-
->>>>>>> upstream/main
                                 <li class="menu-item">
                                     <form method="POST" action="{{ route('logout') }}" id="logout-form">
                                         @csrf
@@ -179,92 +171,17 @@
 
                             </div>
                             <div class="header-grid">
-<<<<<<< HEAD
-=======
-
-                                <div class="popup-wrap message type-header">
-                                    <div class="dropdown">
-                                        
-                                        <ul class="dropdown-menu dropdown-menu-end has-content"
-                                            aria-labelledby="dropdownMenuButton2">
-                                            <li>
-                                                <h6>Notifications</h6>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-1">
-                                                    <div class="image">
-                                                        <i class="icon-noti-1"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Discount available</div>
-                                                        <div class="text-tiny">Morbi sapien massa, ultricies at rhoncus
-                                                            at, ullamcorper nec diam</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-2">
-                                                    <div class="image">
-                                                        <i class="icon-noti-2"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Account has been verified</div>
-                                                        <div class="text-tiny">Mauris libero ex, iaculis vitae rhoncus
-                                                            et</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-3">
-                                                    <div class="image">
-                                                        <i class="icon-noti-3"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Order shipped successfully</div>
-                                                        <div class="text-tiny">Integer aliquam eros nec sollicitudin
-                                                            sollicitudin</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-4">
-                                                    <div class="image">
-                                                        <i class="icon-noti-4"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Order pending: <span>ID 305830</span>
-                                                        </div>
-                                                        <div class="text-tiny">Ultricies at rhoncus at ullamcorper</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li><a href="#" class="tf-button w-full">View all</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
->>>>>>> upstream/main
                                 <div class="popup-wrap user type-header">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                             id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="header-user wg-user">
-<<<<<<< HEAD
                                                 <span class="image">
                                                     <img src="" alt="">
                                                 </span>
                                                 <span class="flex flex-column">
                                                     <span class="body-title mb-2">{{Auth::user()->name}}</span>
                                                     <span class="text-tiny">{{Auth::user()->role}}</span>
-=======
-                                    
-                                                <span class="flex flex-column">
-                                                    <span class="body-title mb-2">{{ Auth::user()->name }}</span>
-                                                    <span class="text-tiny">Admin</span>
->>>>>>> upstream/main
                                                 </span>
                                             </span>
                                         </button>

@@ -54,100 +54,17 @@ class CartController extends Controller
     public function checkout()
     {
         if (!Auth::check()) {
-<<<<<<< HEAD
-            return redirect()->route('login')->with('error', 'Please login to proceed to checkout.');
-=======
             return redirect()->route('login');
->>>>>>> upstream/main
         }
         $address = address::where('user_id', Auth::id())->get();
         $cartItems = Cart::content();
         return view('checkout', compact('address', 'cartItems'));
     }
 
-<<<<<<< HEAD
-    public function placeOrder(Request $request)
-    {
-        $user_id = Auth::id();
-        $address = address::where('user_id', $user_id)->where('is_default', true)->first();
-        if (!$address) {
-            $request->validate([
-                'shipping_name' => 'required',
-                'shipping_phone' => 'required',
-                'shipping_address' => 'required',
-            ]);
-            $address = new address();
-            $address->name = $request->shipping_name;
-            $address->phone = $request->shipping_phone;
-            $address->address = $request->shipping_address;
-            $address->user_id = $user_id;
-            $address->is_default = true;
-            $address->save();
-        }
-        $this->setAmountforCheckout();
-
-        $order = new order();
-        $order->user_id = $user_id;
-        $order->total_price = Session::get('checkout')['total'] ?? 0;
-        $order->shipping_name = $address->name;
-        $order->shipping_phone = $address->phone;
-        $order->shipping_address = $address->address;
-        $order->shipping_email = $request->shipping_email;
-        $order->shipping_note = $request->shipping_note;
-        $order->save();
-
-        foreach (Cart::content() as $item) {
-            $orderItem = new order_detail();
-            $orderItem->order_id = $order->id;
-            $orderItem->product_id = $item->id;
-            $orderItem->quantity = $item->qty;
-            $orderItem->price = $item->price;
-            $orderItem->save();
-        }
-
-        $transaction = new transaction();
-        $transaction->user_id = $user_id;
-        $transaction->order_id = $order->id;
-        $transaction->status = 'pending';
-        $transaction->payment_method = $request->payment_method;
-        $transaction->save();
-
-        Cart::instance('cart')->destroy();
-        Session::forget('checkout');
-        Session::put('order_id', $order->id);
-        return redirect()->route('cart.order.Confirmation');
-    }
-
-    public function setAmountforCheckout()
-    {
-        if (!Cart::instance('cart')->count() > 0) {
-            Session::forget('checkout');
-            return;
-        } else {
-            $cartItems = Cart::content();
-            $total = 0;
-            foreach ($cartItems as $item) {
-                $total += $item->price * $item->qty;
-            }
-            Session::put('checkout', [
-                'subtotal' => Cart::instance('cart')->subtotal(),
-                'tax' => Cart::instance('cart')->tax(),
-                'total' => Cart::instance('cart')->total(),
-            ]);
-        }
-    }
-
-=======
->>>>>>> upstream/main
     public function orderConfirmation()
     {
         if (Session::has('order_id')) {
             $orderId = Session::get('order_id');
-<<<<<<< HEAD
-            $order = order::with('transaction')->find($orderId);
-            if ($order) {
-                return view('order_Confirmation', compact('order'));
-=======
             $order = order::with(['orderDetails.product', 'transaction'])->find($orderId);
             if ($order) {
                 // Calculate subtotal and VAT for display
@@ -158,14 +75,10 @@ class CartController extends Controller
                 $vat = $subtotal * 0.1; // Example: 10% VAT
                 $grandTotal = $subtotal + $vat;
                 return view('order_Confirmation', compact('order', 'subtotal', 'vat', 'grandTotal'));
->>>>>>> upstream/main
             }
         }
         return redirect()->route('cart.index');
     }
-<<<<<<< HEAD
-}
-=======
 
     public function placeOrder(Request $request)
     {
@@ -232,4 +145,3 @@ class CartController extends Controller
         return redirect()->route('cart.order.Confirmation');
     }
 }
->>>>>>> upstream/main

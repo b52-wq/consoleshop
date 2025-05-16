@@ -22,7 +22,18 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $totalOrders = \App\Models\order::count();
+        $pendingOrders = \App\Models\order::where('status', 'order')->count();
+        $deliveredOrders = \App\Models\order::where('status', 'delivered')->count();
+        $cancelledOrders = \App\Models\order::where('status', 'cancelled')->count();
+        $totalProducts = \App\Models\Product::count();
+        $totalRevenue = \App\Models\order::where('status', 'delivered')->sum('total_price');
+        $pendingAmount = \App\Models\order::where('status', 'order')->sum('total_price');
+        $deliveredAmount = \App\Models\order::where('status', 'delivered')->sum('total_price');
+        $cancelledAmount = \App\Models\order::where('status', 'cancelled')->sum('total_price');
+        // Get recent orders with user and transaction relationships
+        $orders = \App\Models\order::with(['user', 'transaction'])->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.index', compact('totalOrders', 'pendingOrders', 'deliveredOrders', 'cancelledOrders', 'totalProducts', 'totalRevenue', 'pendingAmount', 'deliveredAmount', 'cancelledAmount', 'orders'));
     }
 
     public function dashboard()
@@ -37,7 +48,7 @@ class AdminController extends Controller
     
     public function brands()
     {
-        $brands = Brand::all();
+        $brands = Brand::paginate(10); // Use pagination
         return view('admin.brands', compact('brands'));
     }
 
@@ -126,7 +137,7 @@ class AdminController extends Controller
 
     public function categories()
     {
-        $categories = Category::paginate(10); // Paginate with 10 items per page
+        $categories = Category::paginate(10); // Use pagination
         return view('admin.categories', compact('categories'));
     }
 
@@ -357,8 +368,6 @@ class AdminController extends Controller
 
         return redirect()->route('admin.products')->with('success', 'Product deleted successfully!');
     }
-<<<<<<< HEAD
-=======
 
     public function orders()
     {
@@ -449,6 +458,11 @@ class AdminController extends Controller
 
         return view('admin.search-results', compact('orders', 'products', 'query'));
     }
->>>>>>> upstream/main
+
+    public function usersControl()
+    {
+        $users = User::paginate(10);
+        return view('admin.userscontrol', compact('users'));
+    }
 }
 

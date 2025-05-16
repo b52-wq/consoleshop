@@ -43,13 +43,15 @@
                                     <small class="text-muted">{{ $order->shipping_email }}</small>
                                 </div>
                             </td>
-                            <td>${{ number_format($order->total_price, 2) }}</td>
+                            <td>{{ number_format($order->total_price, 2) }}đ</td>
                             <td>
                                 <span class="badge {{ $order->status === 'delivered' ? 'bg-success' : ($order->status === 'cancelled' ? 'bg-danger' : 'bg-warning') }}">
                                     {{ ucfirst($order->status) }}
                                 </span>
                             </td>
-                            <td>{{ ucfirst($order->transaction->payment_method) }}</td>
+                            <td>
+                                {{ $order->transaction ? ucfirst($order->transaction->payment_method) : '-' }}
+                            </td>
                             <td>{{ $order->created_at->format('M d, Y') }}</td>
                             <td>
                                 <div class="list-icon-function">

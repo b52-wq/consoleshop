@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->string('slug')->unique();
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 15, 2);
             $table->enum('status', ['còn hàng', 'hết hàng'])->default('còn hàng');
             $table->boolean('is_featured')->default(false);
             $table->text('processor_info')->nullable();

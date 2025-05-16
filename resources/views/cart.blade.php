@@ -73,7 +73,7 @@
                     </div>
                   </td>
                   <td>
-                    <span class="shopping-cart__product-price">${{ number_format($item->price, 2) }}</span>
+                    <span class="shopping-cart__product-price">{{ number_format($item->price, 2) }}đ</span>
                   </td>
                   <td>
                     <div class="qty-control position-relative">
@@ -86,7 +86,7 @@
                     </div>
                   </td>
                   <td>
-                    <span class="shopping-cart__subtotal">${{ number_format($itemSubtotal, 2) }}</span>
+                    <span class="shopping-cart__subtotal">{{ number_format($itemSubtotal, 2) }}đ</span>
                   </td>
                   <td>
                     <form action="{{ route('cart.remove', $item->rowId) }}" method="post">
@@ -120,7 +120,7 @@
                 <tbody>
                   <tr>
                     <th>Subtotal</th>
-                    <td>${{ number_format($subtotal, 2) }}</td>
+                    <td>{{ number_format($subtotal, 2) }}đ</td>
                   </tr>
                   
                   <tr>
@@ -128,14 +128,14 @@
                     @php
                       $vat = round($subtotal * 0.21, 2); // 21% VAT as per config
                     @endphp
-                    <td>${{ number_format($vat, 2) }}</td>
+                    <td>{{ number_format($vat, 2) }}đ</td>
                   </tr>
                   <tr>
                     <th>Total</th>
                     @php
                       $total = $subtotal + $vat;
                     @endphp
-                    <td>${{ number_format($total, 2) }}</td>
+                    <td>{{ number_format($total, 2) }}đ</td>
                   </tr>
                 </tbody>
               </table>
