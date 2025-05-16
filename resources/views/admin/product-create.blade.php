@@ -79,10 +79,17 @@
                                         </div>
 
                                         <fieldset class="Processor_info">
+<<<<<<< HEAD
                                             <div class="body-title mb-10">Chi tiết cấu hình <span
                                                     class="tf-color-1">*</span></div>
                                             <textarea class="mb-10 ht-150" name="Chi tiết cấu hình"
                                                 placeholder="Chi tiết cấu hình" tabindex="0" aria-required="true"
+=======
+                                            <div class="body-title mb-10">Processor_info <span
+                                                    class="tf-color-1">*</span></div>
+                                            <textarea class="mb-10 ht-150" name="Processor_info"
+                                                placeholder="Processor_info" tabindex="0" aria-required="true"
+>>>>>>> upstream/main
                                                 required=""></textarea>
                                             <div class="text-tiny">Đừng ghi quá 100 chữ.</div>
                                         </fieldset>
@@ -99,7 +106,11 @@
                                     </div>
                                     <div class="wg-box">
                                         <fieldset>
+<<<<<<< HEAD
                                             <div class="body-title">Tải Ảnh <span class="tf-color-1">*</span>
+=======
+                                            <div class="body-title">Upload image <span class="tf-color-1">*</span>
+>>>>>>> upstream/main
                                             </div>
                                             <div class="upload-image flex-grow">
                                                 <div class="item" id="imgpreview" style="display:none">
@@ -110,8 +121,13 @@
                                                         <span class="icon">
                                                             <i class="icon-upload-cloud"></i>
                                                         </span>
+<<<<<<< HEAD
                                                         <span class="body-text">Thả ảnh tại đây hoặc <span
                                                                 class="tf-color">bấn để tìm ảnh</span></span>
+=======
+                                                        <span class="body-text">Drop your image here or <span
+                                                                class="tf-color">click to browse</span></span>
+>>>>>>> upstream/main
                                                         <input class="mb-10" type="file" id="myFile" name="image_name" accept="image/*">
                                                     </label>
                                                 </div>
@@ -131,7 +147,11 @@
                                             <fieldset class="name">
                                                 <div class="body-title mb-10">Số Lượng <span
                                                         class="tf-color-1">*</span></div>
+<<<<<<< HEAD
                                                 <input class="mb-10" type="text" placeholder="Điền Số Lượng"
+=======
+                                                <input class="mb-10" type="text" placeholder="Enter quantity"
+>>>>>>> upstream/main
                                                     name="amount" tabindex="0" value="{{ old('amount') }}" aria-required="true"
                                                     required="">
                                             </fieldset>
@@ -144,8 +164,13 @@
                                                 <div class="body-title mb-10">Hàng Tồn Kho</div>
                                                 <div class="select mb-10">
                                                     <select class="" name="status">
+<<<<<<< HEAD
                                                         <option value="còn hàng">Còn Hàng</option>
                                                         <option value="hết hàng">Đã Hết Hàng</option>
+=======
+                                                        <option value="còn hàng">InStock</option>
+                                                        <option value="hết hàng">Out of Stock</option>
+>>>>>>> upstream/main
                                                     </select>
                                                 </div>
                                             </fieldset>
@@ -154,8 +179,13 @@
                                                 <div class="body-title mb-10">Nổi Bật</div>
                                                 <div class="select mb-10">
                                                     <select class="" name="is_featured">
+<<<<<<< HEAD
                                                         <option value="0">Không</option>
                                                         <option value="1">Có</option>
+=======
+                                                        <option value="0">No</option>
+                                                        <option value="1">Yes</option>
+>>>>>>> upstream/main
                                                     </select>
                                                 </div>
                                             </fieldset>

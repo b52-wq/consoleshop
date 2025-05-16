@@ -15,8 +15,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use Itervention\Image\Facades\Image;
 use App\Models\Product;
-
-
+use App\Models\Order;
 
 
 class AdminController extends Controller
@@ -25,10 +24,20 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+
+    public function dashboard()
+    {
+        $totalOrders = Order::count();
+        $pendingOrders = Order::where('status', 'order')->count();
+        $deliveredOrders = Order::where('status', 'delivered')->count();
+        $cancelledOrders = Order::where('status', 'cancelled')->count();
+        
+        return view('admin.dashboard', compact('totalOrders', 'pendingOrders', 'deliveredOrders', 'cancelledOrders'));
+    }
     
     public function brands()
     {
-        $brands = Brand::paginate(10); // Paginate with 10 items per page
+        $brands = Brand::all();
         return view('admin.brands', compact('brands'));
     }
 
@@ -348,4 +357,98 @@ class AdminController extends Controller
 
         return redirect()->route('admin.products')->with('success', 'Product deleted successfully!');
     }
+<<<<<<< HEAD
+=======
+
+    public function orders()
+    {
+        $orders = Order::with(['user', 'transaction'])->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.orders', compact('orders'));
+    }
+
+    public function orderDetails($id)
+    {
+        $order = Order::with(['user', 'transaction', 'orderDetails.product'])->findOrFail($id);
+        return view('admin.order-details', compact('order'));
+    }
+
+    public function updateOrderStatus(Request $request, $id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->last_modified_by = Auth::id();
+        
+        if ($request->status === 'delivered') {
+            $order->deliver_date = now();
+        } elseif ($request->status === 'cancelled') {
+            $order->cancel_date = now();
+        }
+        
+        $order->save();
+        
+        return redirect()->back()->with('success', 'Order status updated successfully');
+    }
+
+    public function users()
+    {
+        $users = User::paginate(10);
+        return view('admin.users', compact('users'));
+    }
+
+    public function userEdit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.user-edit', compact('user'));
+    }
+
+    public function userUpdate(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'nullable|min:8|confirmed',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+        return redirect()->route('admin.users')->with('success', 'User updated successfully');
+    }
+
+    public function userDelete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+        
+        $orders = Order::where('id', 'LIKE', "%$query%")
+            ->orWhereHas('user', function($q) use ($query) {
+                $q->where('name', 'LIKE', "%$query%")
+                    ->orWhere('email', 'LIKE', "%$query%");
+            })
+            ->orWhere('shipping_phone', 'LIKE', "%$query%")
+            ->orWhere('shipping_address', 'LIKE', "%$query%")
+            ->paginate(10);
+
+        $products = Product::where('name', 'LIKE', "%$query%")
+            ->orWhere('description', 'LIKE', "%$query%")
+            ->orWhere('price', 'LIKE', "%$query%")
+            ->paginate(10);
+
+        return view('admin.search-results', compact('orders', 'products', 'query'));
+    }
+>>>>>>> upstream/main
 }
+

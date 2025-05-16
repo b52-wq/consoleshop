@@ -47,11 +47,19 @@
           </div>
           <div class="order-info__item">
             <label>Total</label>
+<<<<<<< HEAD
             <span>${{$order->total_price}}</span>
           </div>
           <div class="order-info__item">
             <label>Payment Method</label>
             <span>{{$order->transaction->payment_method ?? ''}}</span>
+=======
+            <span>${{ number_format($order->total_price, 2) }}</span>
+          </div>
+          <div class="order-info__item">
+            <label>Payment Method</label>
+            <span>{{$order->transaction->mode}}</span>
+>>>>>>> upstream/main
           </div>
         </div>
         <div class="checkout__totals-wrapper">
@@ -65,6 +73,7 @@
                 </tr>
               </thead>
               <tbody>
+<<<<<<< HEAD
                 @foreach($order->orderDetails as $item)
                 <tr>
                   <td>
@@ -73,14 +82,36 @@
                   <td>
                     ${{ number_format($item->price, 2) }}
                   </td>
+=======
+                @php
+                  $subtotal = 0;
+                @endphp
+                @foreach($order->orderDetails as $item)
+                @php
+                  $itemSubtotal = $item->price * $item->quantity;
+                  $subtotal += $itemSubtotal;
+                @endphp
+                <tr>
+                  <td>{{ $item->product->name }} x {{$item->quantity}}</td>
+                  <td>${{ number_format($itemSubtotal, 2) }}</td>
+>>>>>>> upstream/main
                 </tr>
                 @endforeach
               </tbody>
             </table>
+<<<<<<< HEAD
+=======
+          </div>
+        </div>
+        <div class="checkout__totals-wrapper">
+          <div class="checkout__totals">
+            <h3>Order Totals</h3>
+>>>>>>> upstream/main
             <table class="checkout-totals">
               <tbody>
                 <tr>
                   <th>SUBTOTAL</th>
+<<<<<<< HEAD
                   <td>${{ number_format($order->total_price, 2) }}</td>
                 </tr>
                 <tr>
@@ -90,6 +121,17 @@
                 <tr>
                   <th>TOTAL</th>
                   <td>${{ number_format($order->total_price + ($order->total_price * (config('cart.tax')/100)), 2) }}</td>
+=======
+                  <td>${{ number_format($subtotal, 2) }}</td>
+                </tr>
+                <tr>
+                  <th>VAT</th>
+                  <td>${{ isset($vat) ? number_format($vat, 2) : '0.00' }}</td>
+                </tr>
+                <tr>
+                  <th>TOTAL</th>
+                  <td>${{ isset($grandTotal) ? number_format($grandTotal, 2) : number_format($subtotal + ($vat ?? 0), 2) }}</td>
+>>>>>>> upstream/main
                 </tr>
               </tbody>
             </table>

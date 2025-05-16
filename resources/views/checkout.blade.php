@@ -114,6 +114,7 @@
                 </table>
               </div>
               <div class="checkout__payment-methods">
+<<<<<<< HEAD
                 <div class="form-check">
                   <input class="form-check-input form-check-input_fill" type="radio" name="payment_method" value="bank_transfer" id="checkout_payment_method_1" checked>
                   <label class="form-check-label" for="checkout_payment_method_1">
@@ -128,12 +129,27 @@
                 </div>
                 <div class="form-check">
                   <input class="form-check-input form-check-input_fill" type="radio" name="payment_method" value="cod" id="checkout_payment_method_3">
+=======
+                
+                <div class="form-check">
+                  <input class="form-check-input form-check-input_fill" type="radio" name="mode" value="card" id="mode1">
+                  <label class="form-check-label" for="checkout_payment_method_2">
+                    Card
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input form-check-input_fill" type="radio" name="mode" value="cod" id="mode2">
+>>>>>>> upstream/main
                   <label class="form-check-label" for="checkout_payment_method_3">
                     Cash on delivery
                   </label>
                 </div>
                 <div class="form-check">
+<<<<<<< HEAD
                   <input class="form-check-input form-check-input_fill" type="radio" name="payment_method" value="paypal" id="checkout_payment_method_4">
+=======
+                  <input class="form-check-input form-check-input_fill" type="radio" name="mode" value="paypal" id="mode3">
+>>>>>>> upstream/main
                   <label class="form-check-label" for="checkout_payment_method_4">
                     Paypal
                   </label>

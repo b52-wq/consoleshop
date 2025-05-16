@@ -21,4 +21,12 @@ class order extends Model
     {
         return $this->hasOne(transaction::class);
     }
+<<<<<<< HEAD
+=======
+
+    public function lastModifiedBy()
+    {
+        return $this->belongsTo(User::class, 'last_modified_by');
+    }
+>>>>>>> upstream/main
 }
