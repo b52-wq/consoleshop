@@ -15,14 +15,20 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
+            $table->string('slug')->unique();
+            $table->decimal('price', 10, 2);
+            $table->enum('status', ['còn hàng', 'hết hàng'])->default('còn hàng');
+            $table->boolean('is_featured')->default(false);
             $table->text('processor_info')->nullable();
-            $table->text('technology_info')->nullable();
-            $table->integer('amount')->default(1);
-            $table->string('image_url')->nullable();
+            $table->unsignedBigInteger('amount')->default(1);
+            $table->string('image_name')->nullable(); // Use string for filename
+            $table->string('image_url')->nullable(); // For external image links
+            $table->text('gallery_images')->nullable(); // JSON or comma-separated
             $table->timestamps();
-            $foreignKey = $table->foreignId('product_category_id')->constrained('product_category')->onDelete('cascade');
-            $foreignKey = $table->foreignId('product_brand_id')->constrained('product_brand')->onDelete('cascade');
-            $foreignKey = $table->foreignId('product_detail_id')->constrained('product_detail')->onDelete('cascade');
+
+            // Only define foreign keys once, and do not duplicate columns
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
+            $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('cascade');
         });
     }
 
@@ -31,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products'); // Ensure the table is dropped correctly
+        Schema::dropIfExists('products');
     }
 };
