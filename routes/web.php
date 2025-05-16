@@ -7,10 +7,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AuthAdmin;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/shop/{product_slug}', [ShopController::class, 'product_details'])->name('shop.product_details');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::put('/cart/update/{rowId}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{rowId}', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('/checkout', [CartController::class, 'placeOrder'])->name('cart.placeOrder');
+Route::get('/order-confirmation', [CartController::class, 'orderConfirmation'])->name('cart.order.Confirmation');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index'); 
@@ -36,5 +49,8 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
     Route::get('/admin/product/create', [AdminController::class, 'create_Product'])->name('admin.product.create');
     Route::post('/admin/product/store', [AdminController::class, 'store_Product'])->name('admin.product.store');
+    Route::get('/admin/product/edit/{id}', [AdminController::class, 'edit_Product'])->name('admin.product.edit');
+    Route::put('/admin/product/update/{id}', [AdminController::class, 'update_Product'])->name('admin.product.update');
+    Route::delete('/admin/product/{id}/delete', [AdminController::class, 'delete_Product'])->name('admin.product.delete');
 });
 

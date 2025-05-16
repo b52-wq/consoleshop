@@ -45,7 +45,7 @@
                             <th>Featured</th>
                             <th>Stock</th>
                             <th>Quantity</th>
-                            <th>Processor</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -55,20 +55,20 @@
                             <td>{{ $product->id }}</td>
                             <td class="pname">
                                 <div class="image">
-                                    <img src="{{ asset('uploads/products/thumbnails/' . $product->image) }}" alt="{{ $product->name }}" class="image">
+                                    <img src="{{ $product->image_name ? asset('uploads/products/' . $product->image_name) : asset('assets/images/products/product_0.jpg') }}" alt="{{ $product->name }}" class="image">
                                 </div>
                                 <div class="name">
-                                    <a href="#" class="body-title-2">{{ $product->name }}</a>
+                                    <a href="{{ $product->slug ? route('shop.product_details', ['product_slug' => $product->slug]) : '#' }}" class="body-title-2">{{ $product->name }}</a>
                                     <div class="text-tiny mt-3">{{ $product->slug }}</div>
                                 </div>
                             </td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->brand->name }}</td>
-                            <td>{{ $product->featured == 0 ? "No" : "Yes" }}</td>
-                            <td>{{ $product->stock->status }}</td>
+                            <td>{{ $product->is_featured == 0 ? "No" : "Yes" }}</td>
+                            <td>{{ $product->status }}</td>
                             <td>{{ $product->amount }}</td>
-                            <td>{{ $product->processor_info }}</td>
+                            <td>{{ $product->status }}</td>
                             <td>
                                 <div class="list-icon-function">
                                     <a href="#" target="_blank">
@@ -76,12 +76,12 @@
                                             <i class="icon-eye"></i>
                                         </div>
                                     </a>
-                                    <a href="#">
+                                    <a href="{{ route('admin.product.edit', $product->id) }}">
                                         <div class="item edit">
                                             <i class="icon-edit-3"></i>
                                         </div>
                                     </a>
-                                    <form action="#" method="POST">
+                                    <form action="{{ route('admin.product.delete', ['id' => $product->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="item text-danger delete">
@@ -104,3 +104,24 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(function() {
+        $('.delete').on('click', function(e) {
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then(function (result) {
+                if (result) {
+                    e.target.closest('form').submit(); 
+                }
+            });
+        });
+    });
+</script>
+@endpush

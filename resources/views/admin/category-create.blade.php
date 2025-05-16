@@ -38,25 +38,24 @@
                                         </fieldset>
                                         @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                                         <fieldset>
-                                            <div class="body-title">Upload images <span class="tf-color-1">*</span>
-                                            </div>
+                                            <div class="body-title">Upload images <span class="tf-color-1">*</span> <small>(Only one image)</small></div>
                                             <div class="upload-image flex-grow">
                                                 <div class="item" id="imgpreview" style="display:none">
-                                                    <img src="upload-1.html" class="effect8" alt="">
+                                                    <img src="" class="effect8" alt="">
                                                 </div>
                                                 <div id="upload-file" class="item up-load">
                                                     <label class="uploadfile" for="myFile">
                                                         <span class="icon">
                                                             <i class="icon-upload-cloud"></i>
                                                         </span>
-                                                        <span class="body-text">Drop your images here or select <span
-                                                                class="tf-color">click to browse</span></span>
-                                                        <input type="file" id="myFile" name="image" accept="image/*">
+                                                        <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                                        <input type="file" id="myFile" name="image_name" accept="image/*">
                                                     </label>
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error('image_name') <span class="text-danger">{{ $message }}</span> @enderror
+                                        
                                         <div class="bot">
                                             <div></div>
                                             <button class="tf-button w208" type="submit">Save</button>
@@ -68,18 +67,26 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $function(){
-            $('#myFile').change(function(e) {
-                const photoInp = $('#myFile');
-                const [file]= this.files[0];
-                if (file) {
-                    $('#imgpreview').attr('src', URL.createObjectURL(file));
-                    $('#imgpreview').show();
+<script>
+    $(function(){
+        $('#myFile').change(function(e) {
+            const [file] = this.files;
+            if (file) {
+                $('#imgpreview img').attr('src', URL.createObjectURL(file));
+                $('#imgpreview').show();
             }
         });
-           
-                
-        }
-    </script>
+
+        $('#gFile').change(function(e) {
+            $('#gallery-preview').empty();
+            const files = this.files;
+            if (files.length) {
+                $.each(files, function(i, file) {
+                    const img = $('<img>').attr('src', URL.createObjectURL(file)).css({width: '80px', margin: '5px'});
+                    $('#gallery-preview').append(img);
+                });
+            }
+        });
+    });
+</script>
 @endpush
