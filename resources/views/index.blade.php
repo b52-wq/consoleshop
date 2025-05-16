@@ -15,17 +15,16 @@
       <div class="overflow-hidden position-relative h-100">
         <div class="slideshow-character position-absolute bottom-0 pos_right-center">
           <img loading="lazy" src="{{ asset ( 'assets/images/slideshow-character1.png' ) }}" width="542" height="733"
-            alt="Woman Fashion 1"
+            alt="Nhân vật nữ 1"
             class="slideshow-character__img animate animate_fade animate_btt animate_delay-9 w-auto h-auto" />
         </div>
         <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
           <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">
-            Sản Phẩm Mới</h6>
+            Sản phẩm mới</h6>
           <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">PLAYSTATION</h2>
           <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">5</h2>
-          <a href="#"
-            class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">Mua
-            Ngay</a>
+          <a href="{{ route('shop.index')}}"
+            class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">Mua ngay</a>
         </div>
       </div>
     </div>
@@ -34,21 +33,16 @@
       <div class="overflow-hidden position-relative h-100">
         <div class="slideshow-character position-absolute bottom-0 pos_right-center">
           <img loading="lazy" src="{{ asset ( 'assets/images/slideshow-character2.png' ) }}" width="542" height="733"
-            alt="Woman Fashion 2"
+            alt="Nhân vật nữ 2"
             class="slideshow-character__img animate animate_fade animate_btt animate_delay-9 w-auto h-auto" />
-          <div class="character_markup">
-            <p class="text-uppercase font-sofia fw-bold animate animate_fade animate_rtl animate_delay-10">Summer
-            </p>
-          </div>
         </div>
         <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
           <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">
-            New Arrivals</h6>
-          <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Night Spring</h2>
-          <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Dresses</h2>
-          <a href="#"
-            class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">Shop
-            Now</a>
+            Sản phẩm mới</h6>
+          <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Xbox</h2>
+          <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Seri X</h2>
+          <a href="{{ route('shop.index')}}"
+            class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">Mua ngay</a>
         </div>
       </div>
     </div>
@@ -57,17 +51,16 @@
       <div class="overflow-hidden position-relative h-100">
         <div class="slideshow-character position-absolute bottom-0 pos_right-center">
           <img loading="lazy" src="{{ asset ( 'assets/images/slideshow-character3.png' ) }}" width="542" height="733"
-            alt="Woman Fashion 3"
+            alt="Nhân vật nữ 3"
             class="slideshow-character__img animate animate_fade animate_rtl animate_delay-10 w-auto h-auto" />
         </div>
         <div class="slideshow-text container position-absolute start-50 top-50 translate-middle">
           <h6 class="text_dash text-uppercase fs-base fw-medium animate animate_fade animate_btt animate_delay-3">
-            New Arrivals</h6>
-          <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Night Spring</h2>
-          <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Dresses</h2>
-          <a href="#"
-            class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">Shop
-            Now</a>
+            Sản phẩm mới</h6>
+          <h2 class="h1 fw-normal mb-0 animate animate_fade animate_btt animate_delay-5">Nintendo Switch</h2>
+          <h2 class="h1 fw-bold animate animate_fade animate_btt animate_delay-5">Oled</h2>
+          <a href="{{ route('shop.index')}}"
+            class="btn-link btn-link_lg default-underline fw-medium animate animate_fade animate_btt animate_delay-7">Mua ngay</a>
         </div>
       </div>
     </div>
@@ -91,7 +84,7 @@
   <div class="mb-3 mb-xl-5 pt-1 pb-4"></div>
 
   <section class="products-grid container">
-    <h2 class="section-title text-center mb-3 pb-xl-3 mb-xl-4">Featured Products</h2>
+    <h2 class="section-title text-center mb-3 pb-xl-3 mb-xl-4">Sản phẩm nổi bật</h2>
 
     <div class="row">
       @foreach($products as $product)
@@ -146,11 +139,7 @@
                         </svg>
                     </span>
                 </a>
-                <button class="pc__btn-wl bg-transparent border-0 js-add-wishlist" title="Thêm vào yêu thích">
-                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <use href="#icon_heart" />
-                    </svg>
-                </button>
+                
             </div>
           </div>
         </div>
@@ -159,7 +148,7 @@
     </div><!-- /.row -->
 
     <div class="text-center mt-2">
-      <a class="btn-link btn-link_lg default-underline text-uppercase fw-medium" href="#">Load More</a>
+      <a class="btn-link btn-link_lg default-underline text-uppercase fw-medium" href="#">Tải thêm</a>
     </div>
   </section>
 </div>

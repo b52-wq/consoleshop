@@ -5,7 +5,7 @@
     <section class="shop-main container d-flex pt-4 pt-xl-5">
       <div class="shop-sidebar side-sticky bg-body" id="shopFilter">
         <div class="aside-header d-flex d-lg-none align-items-center">
-          <h3 class="text-uppercase fs-6 mb-0">Filter By</h3>
+          <h3 class="text-uppercase fs-6 mb-0">Lọc Theo</h3>
           <button class="btn-close-lg js-close-aside btn-close-aside ms-auto"></button>
         </div>
 
@@ -16,7 +16,7 @@
             <h5 class="accordion-header" id="accordion-heading-1">
               <button class="accordion-button p-0 border-0 fs-5 text-uppercase" type="button" data-bs-toggle="collapse"
                 data-bs-target="#accordion-filter-1" aria-expanded="true" aria-controls="accordion-filter-1">
-                Product Categories
+                Danh Mục Sản Phẩm
                 <svg class="accordion-button__icon type2" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg"></svg>
               </button>
             </h5>
@@ -24,35 +24,35 @@
               <div class="accordion-body p-0 pt-3">
                 <form method="GET" action="{{ route('shop.index') }}" id="shopFilterForm">
                   <select name="category" class="form-select mb-2" onchange="document.getElementById('shopFilterForm').submit()">
-                    <option value="">All Categories</option>
+                    <option value="">Tất cả danh mục</option>
                     @foreach($categories as $category)
                       <option value="{{ $category->id }}" {{ request()->get('category') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                     @endforeach
                   </select>
 
                   <select name="brand" class="form-select mb-2" onchange="document.getElementById('shopFilterForm').submit()">
-                    <option value="">All Brands</option>
+                    <option value="">Tất cả thương hiệu</option>
                     @foreach($brands as $brand)
                       <option value="{{ $brand->id }}" {{ request()->get('brand') == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
                     @endforeach
                   </select>
 
                   <div class="mb-2">
-                    <label for="min_price" class="form-label">Min Price</label>
-                    <input type="number" name="min_price" id="min_price" class="form-control" placeholder="Min" value="{{ request()->get('min_price') }}">
+                    <label for="min_price" class="form-label">Giá tối thiểu</label>
+                    <input type="number" name="min_price" id="min_price" class="form-control" placeholder="Từ" value="{{ request()->get('min_price') }}">
                   </div>
                   <div class="mb-2">
-                    <label for="max_price" class="form-label">Max Price</label>
-                    <input type="number" name="max_price" id="max_price" class="form-control" placeholder="Max" value="{{ request()->get('max_price') }}">
+                    <label for="max_price" class="form-label">Giá tối đa</label>
+                    <input type="number" name="max_price" id="max_price" class="form-control" placeholder="Đến" value="{{ request()->get('max_price') }}">
                   </div>
 
                   <select name="sort" class="form-select mb-2" onchange="document.getElementById('shopFilterForm').submit()">
-                    <option value="">Default Sorting</option>
-                    <option value="price_asc" {{ request()->get('sort') == 'price_asc' ? 'selected' : '' }}>Price, low to high</option>
-                    <option value="price_desc" {{ request()->get('sort') == 'price_desc' ? 'selected' : '' }}>Price, high to low</option>
+                    <option value="">Sắp xếp mặc định</option>
+                    <option value="price_asc" {{ request()->get('sort') == 'price_asc' ? 'selected' : '' }}>Giá, từ thấp đến cao</option>
+                    <option value="price_desc" {{ request()->get('sort') == 'price_desc' ? 'selected' : '' }}>Giá, từ cao đến thấp</option>
                   </select>
 
-                  <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                  <button type="submit" class="btn btn-primary w-100">Áp dụng bộ lọc</button>
                 </form>
               </div>
             </div>
@@ -88,7 +88,7 @@
                                 {{ Str::limit($product->description, 100) }}
                             </p>
                             <a href="{{ $product->slug ? route('shop.product_details', ['product_slug' => $product->slug]) : '#' }}" class="btn btn-primary mt-3">
-                                View Details
+                                Xem Chi Tiết
                             </a>
                         </div>
                     </div>
@@ -118,9 +118,9 @@
 
         <div class="d-flex justify-content-between mb-4 pb-md-2">
           <div class="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-            <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">Home</a>
+            <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">Trang Chủ</a>
             <span class="breadcrumb-separator menu-link fw-medium ps-1 pe-1">/</span>
-            <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">The Shop</a>
+            <a href="#" class="menu-link menu-link_us-s text-uppercase fw-medium">Cửa Hàng</a>
           </div>
 
           <div class="shop-acs d-flex align-items-center justify-content-between justify-content-md-end flex-grow-1">
@@ -128,7 +128,7 @@
             <div class="shop-asc__seprator mx-3 bg-light d-none d-md-block order-md-0"></div>
 
             <div class="col-size align-items-center order-1 d-none d-lg-flex">
-              <span class="text-uppercase fw-medium me-2">View</span>
+              <span class="text-uppercase fw-medium me-2">Xem</span>
               <button class="btn-link fw-medium me-2 js-cols-size" data-target="products-grid" data-cols="2">2</button>
               <button class="btn-link fw-medium me-2 js-cols-size" data-target="products-grid" data-cols="3">3</button>
               <button class="btn-link fw-medium js-cols-size" data-target="products-grid" data-cols="4">4</button>
@@ -140,7 +140,7 @@
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_filter" />
                 </svg>
-                <span class="text-uppercase fw-medium d-inline-block align-middle">Filter</span>
+                <span class="text-uppercase fw-medium d-inline-block align-middle">Lọc</span>
               </button>
             </div>
           </div>
@@ -166,37 +166,19 @@
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit"
                                 class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium js-add-cart"
-                                data-aside="cartDrawer" title="Add To Cart">Add To Cart</button>
+                                data-aside="cartDrawer" title="Thêm Vào Giỏ Hàng">Thêm Vào Giỏ Hàng</button>
                         </form>
                     </div>
                     <div class="pc__info position-relative" href="{{ $product->slug ? route('shop.product_details', ['product_slug' => $product->slug]) : '#' }}">
                         <p class="pc__category">{{ $product->category->name ?? '' }}</p>
                         <h6 class="pc__title"><a href="{{ $product->slug ? route('shop.product_details', ['product_slug' => $product->slug]) : '#' }}">{{ $product->name }}</a></h6>
                         <div class="product-card__price d-flex">
-                            <span class="money price">${{ number_format($product->price, 2) }}</span>
+                            <span class="money price">{{ number_format($product->price, 2) }}đ</span>
                         </div>
                         <div class="product-card__review d-flex align-items-center">
                             <div class="reviews-group d-flex">
-                                <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_star" />
-                                </svg>
-                                <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_star" />
-                                </svg>
-                                <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_star" />
-                                </svg>
-                                <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_star" />
-                                </svg>
-                                <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                                    <use href="#icon_star" />
-                                </svg>
-                            </div>
-                            <span class="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
-                        </div>
                         <button class="pc__btn-wl position-absolute top-0 end-0 bg-transparent border-0 js-add-wishlist"
-                            title="Add To Wishlist">
+                            title="Thêm Vào Danh Sách Yêu Thích">
                             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <use href="#icon_heart" />
                             </svg>
@@ -212,7 +194,7 @@
             <svg class="me-1" width="7" height="11" viewBox="0 0 7 11" xmlns="http://www.w3.org/2000/svg">
               <use href="#icon_prev_sm" />
             </svg>
-            <span class="fw-medium">PREV</span>
+            <span class="fw-medium">TRANG TRƯỚC</span>
           </a>
           <ul class="pagination mb-0">
             <li class="page-item"><a class="btn-link px-1 mx-2 btn-link_active" href="#">1</a></li>
@@ -221,7 +203,7 @@
             <li class="page-item"><a class="btn-link px-1 mx-2" href="#">4</a></li>
           </ul>
           <a href="#" class="btn-link d-inline-flex align-items-center">
-            <span class="fw-medium me-1">NEXT</span>
+            <span class="fw-medium me-1">TRANG SAU</span>
             <svg width="7" height="11" viewBox="0 0 7 11" xmlns="http://www.w3.org/2000/svg">
               <use href="#icon_next_sm" />
             </svg>

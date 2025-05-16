@@ -39,24 +39,20 @@
         <div class="col-lg-5">
           <div class="d-flex justify-content-between mb-4 pb-md-2">
             <div class="breadcrumb mb-0 d-none d-md-block flex-grow-1">
-              <a href="{{ route('home.index') }}" class="menu-link menu-link_us-s text-uppercase fw-medium">Home</a>
+              <a href="{{ route('home.index') }}" class="menu-link menu-link_us-s text-uppercase fw-medium">Trang chủ</a>
               <span class="breadcrumb-separator menu-link fw-medium ps-1 pe-1">/</span>
-              <a href="{{ route('shop.index') }}" class="menu-link menu-link_us-s text-uppercase fw-medium">The Shop</a>
+              <a href="{{ route('shop.index') }}" class="menu-link menu-link_us-s text-uppercase fw-medium">Cửa hàng</a>
             </div>
           </div>
           <h1 class="product-single__name">{{ $product->name }}</h1>
           <div class="product-single__rating">
             <div class="reviews-group d-flex">
               @for($i=0; $i<5; $i++)
-                <svg class="review-star" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
-                  <use href="#icon_star" />
-                </svg>
               @endfor
             </div>
-            <span class="reviews-note text-lowercase text-secondary ms-1">8k+ reviews</span>
           </div>
           <div class="product-single__price">
-            <span class="current-price">${{ number_format($product->price, 2) }}</span>
+            <span class="current-price">{{ number_format($product->price, 0, ',', '.') }}₫</span>
           </div>
           <div class="product-single__short-desc">
             <p>{{ $product->processor_info }}</p>
@@ -74,22 +70,18 @@
                 <div class="qty-control__reduce">-</div>
                 <div class="qty-control__increase">+</div>
               </div>
-              <button type="submit" class="btn btn-primary btn-addtocart " data-aside="cartDrawer">Add to Cart</button>
+              <button type="submit" class="btn btn-primary btn-addtocart " data-aside="cartDrawer">Thêm vào giỏ hàng</button>
               <a href="{{ route('cart.index') }}" class="btn btn-outline-secondary ms-2">Xem giỏ hàng</a>
             </div>
           </form>
 
           <div class="product-single__meta-info">
             <div class="meta-item">
-              <label>SKU:</label>
-              <span>N/A</span>
-            </div>
-            <div class="meta-item">
-              <label>Categories:</label>
+              <label>Danh mục:</label>
               <span>{{ $product->category->name ?? '' }}</span>
             </div>
             <div class="meta-item">
-              <label>Brand:</label>
+              <label>Thương hiệu:</label>
               <span>{{ $product->brand->name ?? '' }}</span>
             </div>
           </div>
@@ -99,11 +91,11 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <a class="nav-link nav-link_underscore active" id="tab-description-tab" data-bs-toggle="tab"
-              href="#tab-description" role="tab" aria-controls="tab-description" aria-selected="true">Description</a>
+              href="#tab-description" role="tab" aria-controls="tab-description" aria-selected="true">Mô tả</a>
           </li>
           <li class="nav-item" role="presentation">
             <a class="nav-link nav-link_underscore" id="tab-processor-tab" data-bs-toggle="tab"
-              href="#tab-processor" role="tab" aria-controls="tab-processor" aria-selected="false">Processor Info</a>
+              href="#tab-processor" role="tab" aria-controls="tab-processor" aria-selected="false">Thông tin bộ xử lý</a>
           </li>
         </ul>
         <div class="tab-content">

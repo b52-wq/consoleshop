@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="vi">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -287,7 +287,7 @@
         <form action="#" method="GET" class="search-field position-relative mt-4 mb-3">
           <div class="position-relative">
             <input class="search-field__input w-100 border rounded-1" type="text" name="search-keyword"
-              placeholder="Search products" />
+              placeholder="Tìm kiếm sản phẩm" />
             <button class="btn-icon search-popup__submit pb-0 me-2" type="submit">
               <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -307,16 +307,16 @@
         <div class="overflow-hidden">
           <ul class="navigation__list list-unstyled position-relative">
             <li class="navigation__item">
-              <a href="{{route('home.index')}}" class="navigation__link">Home</a>
+              <a href="{{route('home.index')}}" class="navigation__link">Trang Chủ</a>
             </li>
             <li class="navigation__item">
-              <a href="{{route('shop.index')}}" class="navigation__link">Shop</a>
+              <a href="{{route('shop.index')}}" class="navigation__link">Cửa Hàng</a>
             </li>
             <li class="navigation__item">
-              <a href="{{ route('cart.index') }}" class="navigation__link">Cart</a>
+              <a href="{{ route('cart.index') }}" class="navigation__link">Giỏ Hàng</a>
             </li>
             <li class="navigation__item">
-              <a href="about.html" class="navigation__link">About</a>
+              <a href="about.html" class="navigation__link">Thông Tin Cửa Hàng</a>
             </li>
           </ul>
         </div>
@@ -328,7 +328,7 @@
             xmlns="http://www.w3.org/2000/svg">
             <use href="#icon_user" />
           </svg>
-          <span class="d-inline-block ms-2 text-uppercase align-middle fw-medium">My Account</span>
+          <span class="d-inline-block ms-2 text-uppercase align-middle fw-medium">Tài Khoản Của Tôi</span>
         </div>
 
 
@@ -421,10 +421,10 @@
 
             <div class="search-popup js-hidden-content">
               <form action="#" method="GET" class="search-field container">
-                <p class="text-uppercase text-secondary fw-medium mb-4">What are you looking for?</p>
+                <p class="text-uppercase text-secondary fw-medium mb-4">Bạn đang tìm kiếm điều gì?</p>
                 <div class="position-relative">
                   <input class="search-field__input search-popup__input w-100 fw-medium" type="text"
-                    name="search-keyword" placeholder="Search products" />
+                    name="search-keyword" placeholder="Tìm kiếm sản phẩm" />
                   <button class="btn-icon search-popup__submit" type="submit">
                     <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -436,15 +436,15 @@
 
                 <div class="search-popup__results">
                   <div class="sub-menu search-suggestion">
-                    <h6 class="sub-menu__title fs-base">Quicklinks</h6>
+                    <h6 class="sub-menu__title fs-base">Liên kết nhanh</h6>
                     <ul class="sub-menu__list list-unstyled">
-                      <li class="sub-menu__item"><a href="shop2.html" class="menu-link menu-link_us-s">New Arrivals</a>
+                      <li class="sub-menu__item"><a href="shop2.html" class="menu-link menu-link_us-s">Sản phẩm mới</a>
                       </li>
-                      <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Dresses</a></li>
-                      <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Accessories</a>
+                      <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Đầm</a></li>
+                      <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Phụ kiện</a>
                       </li>
-                      <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Footwear</a></li>
-                      <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Sweatshirt</a></li>
+                      <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Giày dép</a></li>
+                      <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Áo khoác</a></li>
                     </ul>
                   </div>
 

@@ -65,5 +65,7 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::get('/admin/order/details/{id}', [AdminController::class, 'orderDetails'])->name('admin.order.details');
     Route::put('/admin/order/{id}/status', [AdminController::class, 'updateOrderStatus'])->name('admin.order.status.update');
     
+    // Cập nhật số lượng sản phẩm qua AJAX
+    Route::post('/admin/products/update-amount', [AdminController::class, 'updateProductAmount'])->name('admin.products.updateAmount');
 });
 

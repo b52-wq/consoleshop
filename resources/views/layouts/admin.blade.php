@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="vi">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,12 +45,12 @@
                     </div>
                     <div class="center">
                         <div class="center-item">
-                            <div class="center-heading">Main Home</div>
+                            <div class="center-heading">Trang Chủ Chính</div>
                             <ul class="menu-list">
                                 <li class="menu-item">
                                     <a href="{{route('admin.index') }}" class="">
                                         <div class="icon"><i class="icon-grid"></i></div>
-                                        <div class="text">Dashboard</div>
+                                        <div class="text">Bảng Điều Khiển</div>
                                     </a>
                                 </li>
                             </ul>
@@ -160,7 +160,7 @@
 
                                 <form action="{{ route('admin.search') }}" method="GET" class="form-search flex-grow">
                                     <fieldset class="name">
-                                        <input type="text" placeholder="Search here..." class="show-search" name="search"
+                                        <input type="text" placeholder="Tìm kiếm ở đây..." class="show-search" name="search"
                                             tabindex="2" value="{{ request('search') }}" aria-required="true" required="">
                                     </fieldset>
                                     <div class="button-submit">
@@ -218,17 +218,17 @@
 
                     var options = {
                         series: [{
-                            name: 'Total',
+                            name: 'Tổng',
                             data: [0.00, 0.00, 0.00, 0.00, 0.00, 273.22, 208.12, 0.00, 0.00, 0.00, 0.00, 0.00]
                         }, {
-                            name: 'Pending',
+                            name: 'Đang Xử Lý',
                             data: [0.00, 0.00, 0.00, 0.00, 0.00, 273.22, 208.12, 0.00, 0.00, 0.00, 0.00, 0.00]
                         },
                         {
-                            name: 'Delivered',
+                            name: 'Đã Giao',
                             data: [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
                         }, {
-                            name: 'Canceled',
+                            name: 'Đã Hủy',
                             data: [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
                         }],
                         chart: {
@@ -261,7 +261,7 @@
                                     colors: '#212529',
                                 },
                             },
-                            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                            categories: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
                         },
                         yaxis: {
                             show: false,

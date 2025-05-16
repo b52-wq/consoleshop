@@ -464,5 +464,23 @@ class AdminController extends Controller
         $users = User::paginate(10);
         return view('admin.userscontrol', compact('users'));
     }
+
+    /**
+     * Cập nhật số lượng sản phẩm qua AJAX
+     */
+    public function updateProductAmount(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'amount' => 'required|integer|min:0',
+        ]);
+        $product = Product::find($request->product_id);
+        if (!$product) {
+            return response()->json(['success' => false, 'message' => 'Không tìm thấy sản phẩm!']);
+        }
+        $product->amount = $request->amount;
+        $product->save();
+        return response()->json(['success' => true, 'message' => 'Cập nhật số lượng thành công!']);
+    }
 }
 

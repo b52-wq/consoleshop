@@ -67,7 +67,9 @@
                             <td>{{ $product->brand->name }}</td>
                             <td>{{ $product->is_featured == 0 ? "Không" : "Có" }}</td>
                             <td>{{ $product->status }}</td>
-                            <td>{{ $product->amount }}</td>
+                            <td>
+                                <a min="0" class="" data-product-id="{{ $product->id }}" value=>{{ $product->amount }}</a>
+                            </td>
                             <td>{{ $product->status }}</td>
                             <td>
                                 <div class="list-icon-function">
@@ -119,6 +121,37 @@
             }).then(function (result) {
                 if (result) {
                     e.target.closest('form').submit(); 
+                }
+            });
+        });
+
+        // Xử lý cập nhật số lượng sản phẩm qua AJAX
+        $('.update-amount-btn').on('click', function(e) {
+            e.preventDefault();
+            var btn = $(this);
+            var productId = btn.data('product-id');
+            var amount = btn.closest('td').find('.product-amount-input').val();
+            btn.prop('disabled', true);
+            $.ajax({
+                url: '/admin/products/update-amount',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId,
+                    amount: amount
+                },
+                success: function(res) {
+                    if(res.success) {
+                        swal("Thành công", res.message, "success");
+                    } else {
+                        swal("Lỗi", res.message, "error");
+                    }
+                },
+                error: function() {
+                    swal("Lỗi", "Không thể cập nhật số lượng!", "error");
+                },
+                complete: function() {
+                    btn.prop('disabled', false);
                 }
             });
         });
